@@ -1,0 +1,31 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
+	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <j:set var="related" value="${it.relatedTests}"/>
+    <j:if test="${!related.isEmpty()}">
+    <t:summary icon="document.gif">
+	<H3>This test in other projects</H3>
+	<table class="pane">
+		<tr>
+      <td class="pane-header" style="width:10em">${%Build}</td>
+      <td class="pane-header" style="width:5em">${%Test Result}</td>
+		</tr>
+			<j:forEach var="test" items="${related}">
+			<j:set var="b" value="${test.testResult.owner}"/>
+              <tr>
+                <td class="pane">
+                  <a href="${app.rootUrl}${b.url}testReport${test.url}">${b.fullDisplayName}</a>
+                  <st:nbsp/>
+                <j:forEach var="badge" items="${test.testActions}">
+                  <st:include it="${badge}" page="badge.jelly" optional="true"/>
+                </j:forEach>
+                </td>
+                <td class="pane">
+                    ${test.failCount} tests failed, out of ${test.totalCount} total.
+                </td>
+              </tr>
+			</j:forEach>
+	</table>
+	</t:summary>
+		</j:if>
+</j:jelly>
