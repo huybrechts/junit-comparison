@@ -1,5 +1,6 @@
 package jenkins.plugins.junitcomparison;
 
+import com.google.common.hash.BloomFilter;
 import hudson.Extension;
 import hudson.Launcher;
 import hudson.model.AbstractBuild;
@@ -20,7 +21,7 @@ public class JCTestDataPublisher extends TestDataPublisher {
 
     @Override
     public TestResultAction.Data getTestData(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener, TestResult testResult) throws IOException, InterruptedException {
-	return JCData.INSTANCE;
+        return new JCData(testResult);
     }
 
     @Extension
