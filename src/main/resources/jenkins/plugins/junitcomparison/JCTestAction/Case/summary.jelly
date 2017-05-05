@@ -4,13 +4,13 @@
     <j:set var="related" value="${it.relatedTests}"/>
     <j:if test="${!related.isEmpty()}">
     <t:summary icon="document.gif">
-	<H3>The latest result in other projects</H3>
-	<table class="pane">
+	<H3>The latest result in other projects in the last week.</H3>
+	<table class="pane sortable">
 		<tr>
-      <td class="pane-header" style="width:10em">${%Build}</td>
-      <td class="pane-header" style="width:5em">${%Date}</td>
-      <td class="pane-header" style="width:5em">${%Test Duration}</td>
-      <td class="pane-header" style="width:5em">${%Test Result}</td>
+      <th class="pane-header" style="width:10em">${%Build}</th>
+      <th class="pane-header" style="width:5em" initialSortDir="up">${%Date}</th>
+      <th class="pane-header" style="width:5em">${%Test Duration}</th>
+      <th class="pane-header" style="width:5em">${%Test Result}</th>
 		</tr>
 			<j:forEach var="test" items="${related}">
                 <j:set var="test" value="${test.testObject}"/>

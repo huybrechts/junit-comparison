@@ -17,6 +17,8 @@ import org.kohsuke.stapler.export.Exported;
 import org.kohsuke.stapler.export.ExportedBean;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @ExportedBean
@@ -129,6 +131,13 @@ public class JCTestAction extends TestAction {
             TestObject relatedTest = action.getResult().findCorrespondingResult(object.getId());
             if (relatedTest != null) result.add(new RelatedTest(relatedTest));
         }
+
+        Collections.sort(result, new Comparator<RelatedTest>() {
+            @Override
+            public int compare(RelatedTest o1, RelatedTest o2) {
+                return Long.compare(o1.testObject.getRun().getTimeInMillis(), o2.testObject.getRun().getTimeInMillis());
+            }
+        });
 
         return result;
     }
