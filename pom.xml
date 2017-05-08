@@ -10,7 +10,7 @@
   <artifactId>junit-comparison</artifactId>
   <packaging>hpi</packaging>
   <name>JUnit Comparison plugin</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
     <dependencies>
         <dependency>
@@ -42,7 +42,7 @@
   <scm>
     <connection>scm:git:git://github.com/huybrechts/junit-comparison.git</connection>
     <developerConnection>scm:git:git@github.com:huybrechts/junit-comparison.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>junit-comparison-1.0</tag>
   </scm>  
 
   <distributionManagement>
